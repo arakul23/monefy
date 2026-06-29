@@ -34,7 +34,7 @@ routes/
 └── api.php
 database/
 ├── migrations/
-└── seeders/InvoiceSeeder.php      # 5 sample invoices
+└── seeders/InvoiceSeeder.php
 ```
 
 **API endpoints:**
