@@ -20,9 +20,13 @@ type Invoice = {
 const route = useRoute()
 const config = useRuntimeConfig()
 
-const { data: response, pending, error } = await useFetch<{ data: Invoice }>(`/invoices/${route.params.id}`, {
-    baseURL: import.meta.server ? config.apiInternalBase : config.public.apiBase
-})
+const { data: response, pending, error } = await useFetch<{ data: Invoice }>(
+    `/invoices/${route.params.id}`,
+    {
+        baseURL: import.meta.server ? config.apiInternalBase : config.public.apiBase,
+        key: `invoice-${route.params.id}`,
+    }
+)
 
 const invoice = computed(() => response.value?.data ?? null)
 
@@ -34,14 +38,6 @@ const invoiceTitle = computed(() => {
     return invoice.value.number
         ? `Invoice #${invoice.value.number}`
         : `Invoice #${invoice.value.id}`
-})
-
-const invoiceAmount = computed(() => {
-    if (!invoice.value) {
-        return null
-    }
-
-    return invoice.value.total ?? invoice.value.amount ?? null
 })
 
 const formatDate = (value?: unknown) => {
@@ -227,13 +223,13 @@ const details = computed(() => {
                 </UCard>
             </div>
         </template>
-
-        <UAlert
-            v-else
-            color="warning"
-            variant="soft"
-            title="Invoice not found"
-            description="Check the account ID or try returning to the list."
-        />
+        <template v-else>
+            <UAlert
+                color="warning"
+                variant="soft"
+                title="Invoice not found"
+                description="Check the account ID or try returning to the list."
+            />
+        </template>
     </div>
 </template>

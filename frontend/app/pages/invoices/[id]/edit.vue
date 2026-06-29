@@ -43,6 +43,7 @@ const money = () =>
         .coerce
         .number()
         .positive('Must be greater than 0')
+        .max(999999.99, 'Must not exceed 999,999.99')
         .multipleOf(0.01, 'Must have at most 2 decimal places')
 
 const requiredDate = () =>
