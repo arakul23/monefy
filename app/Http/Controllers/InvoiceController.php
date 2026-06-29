@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateInvoiceRequest;
@@ -8,13 +10,14 @@ use App\Http\Resources\InvoiceResource;
 use App\Models\Invoice;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class InvoiceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): AnonymousResourceCollection
     {
         return InvoiceResource::collection(Invoice::all()->sortByDesc('created_at'));
     }
@@ -22,7 +25,7 @@ class InvoiceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CreateInvoiceRequest $request)
+    public function store(CreateInvoiceRequest $request): JsonResponse
     {
         Invoice::create($request->validated());
 
@@ -32,7 +35,7 @@ class InvoiceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Invoice $invoice)
+    public function show(Invoice $invoice): InvoiceResource
     {
         return InvoiceResource::make($invoice);
     }
