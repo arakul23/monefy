@@ -1,6 +1,10 @@
 # Monefy — Invoice Management
 
+### Як підняти проект
 
+```
+docker compose up --build -d
+```
 
 - **Frontend:** http://localhost:3001/invoices
 - **API:** http://localhost:8080/api/invoices
@@ -8,9 +12,9 @@
 Міграції і сідер запускаються автоматично при збірці контейнерів(`RUN_MIGRATIONS=true`, `RUN_SEEDERS=true`).
 
 ---
-## Як ти структурував frontend і backend?
+### 1. Як ти структурував frontend і backend?
 
-### Backend (`/`)
+### Backend
 
 ```
 app/

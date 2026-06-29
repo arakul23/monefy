@@ -9,9 +9,11 @@ services:
     environment:
       DB_HOST: mysql
       DB_PORT: 3306
+      DB_DATABASE: monefy
+      DB_USERNAME: root
       DB_PASSWORD: root
-      RUN_MIGRATIONS: true
-      RUN_SEEDERS: true
+      RUN_MIGRATIONS: "true"
+      RUN_SEEDERS: "true"
     depends_on:
       mysql:
         condition: service_healthy

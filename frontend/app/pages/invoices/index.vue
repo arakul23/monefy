@@ -89,7 +89,7 @@ const columns: TableColumn<Invoice>[] = [
                 UDropdownMenu,
                 {
                     content: {align: 'end'},
-                    items: items, // передаем правильный двумерный массив
+                    items: items,
                     'aria-label': 'Actions dropdown'
                 },
                 () =>
@@ -106,11 +106,13 @@ const columns: TableColumn<Invoice>[] = [
 
 const pagination = ref({
     pageIndex: 0,
-    pageSize: 2
+    pageSize: 5
 })
 
 function getRowItems(row: any) {
-
+    if (row.original.status !== 'Pending') {
+        return []
+    }
 
     return [
         [
