@@ -54,11 +54,11 @@ app/
 │   └── InvoiceForm.vue        # Загальна форма для сторінок створення і апдейту інвойса
 ├── pages/
 │   └── invoices/
-│       ├── index.vue          # /invoices          — список інвойсів з пагінацією
+│       ├── index.vue          # /invoices          — Список інвойсів з пагінацією
 │       ├── create.vue         # /invoices/create   — Створення інвойсу
 │       └── [id]/
-│           ├── index.vue      # /invoices/[id]     — перегляд інвойсу
-│           └── edit.vue       # /invoices/[id]/edit — апдейт інвойсу
+│           ├── index.vue      # /invoices/[id]     — Перегляд інвойсу
+│           └── edit.vue       # /invoices/[id]/edit — Апдейт інвойсу
 └── app.vue
 nuxt.config.ts
 ```
